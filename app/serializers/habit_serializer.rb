@@ -1,3 +1,3 @@
 class HabitSerializer < ActiveModel::Serializer
-  attributes :id, :name, :frequency, :progress
+  attributes :id, :name, :frequency, :progress, :goal
 end
