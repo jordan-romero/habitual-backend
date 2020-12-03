@@ -39,7 +39,7 @@ class Api::V1::HabitsController < ApplicationController
     private 
 
     def set_habit
-      @habit = habit.find_by(id: params[:id])
+      @habit = Habit.find_by(id: params[:id])
     end 
 
     def habit_params
