@@ -1,4 +1,5 @@
 class Api::V1::GoalsController < ApplicationController
+  before_action :set_goal, only: [:update, :destroy]
 
     def index 
         goals = current_user.goals 
@@ -18,8 +19,23 @@ class Api::V1::GoalsController < ApplicationController
           end
     end 
 
+    def update
+      if @goal.update(goal_params)
+          render json: @goal, status: 200
+      else
+        error_resp = {
+          error: @goal.errors.full_messages.to_sentence
+        }
+        render json: error_resp, status: :unprocessable_entity
+      end
+    end 
+
 
     private 
+
+    def set_goal
+      @goal = Goal.find_by(id: params[:id])
+    end 
 
     def goal_params
         params.require(:goal).permit(:name)
