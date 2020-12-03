@@ -43,6 +43,6 @@ class Api::V1::HabitsController < ApplicationController
     end 
 
     def habit_params
-        params.require(:habit).permit(:name)
+        params.require(:habit).permit(:name, :frequency, :goal_id)
     end 
 end
