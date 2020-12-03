@@ -30,6 +30,11 @@ class Api::V1::GoalsController < ApplicationController
       end
     end 
 
+    def destroy
+      @goal.destroy
+      render json: {notice: 'Goal destroyed'}, status: 200
+    end
+
 
     private 
 
