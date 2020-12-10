@@ -2,6 +2,7 @@ class Goal < ApplicationRecord
   belongs_to :user
   has_many :habits, dependent: :destroy
 
+  validates :name, presence: true
 
   def username
     user.username
