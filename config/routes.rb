@@ -8,9 +8,9 @@ Rails.application.routes.draw do
 
   namespace :api do 
     namespace :v1 do 
-      resources :habits
-      resources :goals
-      resources :users
+      resources :habits, only: [:index, :create, :update, :destroy]
+      resources :goals,  only: [:index, :create, :update, :destroy]
+      resources :users, only: [:create]
     end 
   end 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
