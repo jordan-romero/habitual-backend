@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_10_234744) do
+ActiveRecord::Schema.define(version: 2020_12_11_182130) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,14 @@ ActiveRecord::Schema.define(version: 2020_12_10_234744) do
     t.index ["user_id"], name: "index_goals_on_user_id"
   end
 
+  create_table "habit_completions", force: :cascade do |t|
+    t.date "date_completed"
+    t.bigint "habit_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["habit_id"], name: "index_habit_completions_on_habit_id"
+  end
+
   create_table "habits", force: :cascade do |t|
     t.string "name"
     t.integer "frequency"
@@ -30,13 +38,6 @@ ActiveRecord::Schema.define(version: 2020_12_10_234744) do
     t.bigint "goal_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "monday", default: false
-    t.boolean "tuesday", default: false
-    t.boolean "wednesday", default: false
-    t.boolean "thursday", default: false
-    t.boolean "friday", default: false
-    t.boolean "saturday", default: false
-    t.boolean "sunday", default: false
     t.index ["goal_id"], name: "index_habits_on_goal_id"
   end
 
@@ -50,5 +51,6 @@ ActiveRecord::Schema.define(version: 2020_12_10_234744) do
   end
 
   add_foreign_key "goals", "users"
+  add_foreign_key "habit_completions", "habits"
   add_foreign_key "habits", "goals"
 end
