@@ -3,7 +3,9 @@
 one:
   date_completed: 2020-12-11
   habit: one
+  user: one
 
 two:
   date_completed: 2020-12-11
   habit: two
+  user: two

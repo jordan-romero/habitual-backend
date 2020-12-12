@@ -1,5 +1,6 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :username, :goals, :habits
+  attributes :id, :username
+  # :habits
   has_many :goals
-  has_many :habits
+  # has_many :habits
 end
