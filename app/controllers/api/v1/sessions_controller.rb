@@ -6,7 +6,7 @@ class Api::V1::SessionsController < ApplicationController
     
         if user && user.authenticate(params[:session][:password])
           session[:user_id] = user.id
-          render json: user, include: ['goals', 'habits', 'habit_completions'], status: 200
+          render json: user, status: 200
         else
           render json: {
             error: "Invalid Credentials"

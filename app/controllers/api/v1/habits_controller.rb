@@ -20,8 +20,13 @@ class Api::V1::HabitsController < ApplicationController
     end 
 
     def update
-      
-      if params[:id] 
+      if params[:habitId] 
+        @habit = Habit.find_by(id: params[:habitId])
+        HabitCompletion.create(date_completed: Date.today, user_id: current_user.id, habit_id: params[:habitId])
+        @habit.update(progress: @habit.habit_completions.count)
+         
+        render json: @habit, status: 200 
+      else 
         if @habit.update(habit_params)
           render json: @habit, status: 200
         else
@@ -29,9 +34,7 @@ class Api::V1::HabitsController < ApplicationController
             error: @habit.errors.full_messages.to_sentence
           }
           render json: error_resp, status: :unprocessable_entity
-        end
-      else
-        render json: {notice: "fuck this update"}   
+        end 
       end 
       # if params[:id]
       #   if params[:progress]

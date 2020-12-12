@@ -3,25 +3,26 @@ class HabitSerializer < ActiveModel::Serializer
 
 
   def completed_this_week
-    days = object.habit_completions.map{|completed| completed.date_completed.strftime("%A") }
-    hash = {
-      "Monday": true, 
-      "Tuesday": false, 
-      "Wednesday": true, 
-      "Thursday": true, 
-      "Friday": false, 
-      "Saturday": false,
-      "Sunday": false,
-    }
-    days.each do |day| 
-      if day == hash[:day] 
-        hash[:day] = true 
-      end
-      puts hash 
-    end 
 
+    days = object.habit_completions.map{|completed| completed.date_completed.strftime("%A") }
+
+    hash = {
+      'Monday': false,
+      'Tuesday': false,
+      'Wednesday': false,
+      'Thursday': false,
+      'Friday': false,
+      'Saturday': false,
+      'Sunday': false
+    }
+
+    days.each do |day|
+      if hash.key?(day.to_sym)
+        hash[day.to_sym] = true
+      end
+    end
     return hash 
   end
-
+  
   
 end
