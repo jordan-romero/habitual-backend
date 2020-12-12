@@ -1,6 +1,5 @@
 class HabitSerializer < ActiveModel::Serializer
   attributes :goal, :name, :id, :frequency, :progress, :completed_this_week 
-  belongs_to :goal
 
 
   def completed_this_week
