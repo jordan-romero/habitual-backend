@@ -36,19 +36,6 @@ class Api::V1::HabitsController < ApplicationController
           render json: error_resp, status: :unprocessable_entity
         end 
       end 
-      # if params[:id]
-      #   if params[:progress]
-      #     @habit.progress = params[:progress]
-      #     render json: @habit, status: 200
-      #   elsif @habit.update(habit_params)
-      #       render json: @habit, status: 200
-      #   else
-      #     error_resp = {
-      #       error: @habit.errors.full_messages.to_sentence
-      #     }
-      #     render json: error_resp, status: :unprocessable_entity
-      #   end
-      # end 
     end 
 
     def destroy
