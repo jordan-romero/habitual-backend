@@ -1,6 +1,6 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  config.action_mailer.default_url_options = { :host => 'https://habitualbackend.herokuapp.com/api/v1/goals' }
+  config.action_mailer.default_url_options = { :host => 'https://habitualbackend.herokuapp.com' }
   # Code is not reloaded between requests.
   config.cache_classes = true
 
