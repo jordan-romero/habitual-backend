@@ -1,5 +1,6 @@
 class Api::V1::GoalsController < ApplicationController
   before_action :set_goal, only: [:update, :destroy]
+  # skip_before_action :verify_authenticity_token
 
     def index 
         goals = current_user.goals 
