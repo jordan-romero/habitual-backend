@@ -2,7 +2,7 @@ class Api::V1::GoalsController < ApplicationController
   before_action :set_goal, only: [:update, :destroy]
 
     def index 
-        goals = Goal.all 
+        goals = current_user.goals 
         render json: goals, status: 200
     end 
 
